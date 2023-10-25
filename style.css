@@ -40,14 +40,25 @@ header nav {
 
 i {
     transition: transform 0.3s, color 0.3s;
-}
-
-a:hover i {
-    transform: translateY(-20%);
-    color: #ffffffff;
+    
 }
 
 a i {
     transform: translateY(0%);
     color: var(--primary);
+    
+    
 }
+
+a:hover i {
+    transform: translateY(-20%);
+    color: #ffffffff;
+    /* width: 30px;
+    height: 30px; */
+    
+
+    /* background: var(--background); */
+
+    
+}
+
