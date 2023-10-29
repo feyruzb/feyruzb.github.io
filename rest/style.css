@@ -72,16 +72,17 @@ a.active i {
     border:3px solid #000000;
     aspect-ratio: 2;
     border-radius: 2rem;
-     box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.2);
     background-color: var(--text);
 }
 
-.row :nth-child(even){
+
+
+.row :nth-child(even) > div{ 
     animation: boxinright ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 3s;
 }
-.row :nth-child(odd){
+.row :nth-child(odd) > div{
     animation: boxinleft ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 2s;
@@ -104,6 +105,7 @@ a.active i {
     }
     100% {
         transform: translateX(0%);
+        box-shadow: 3px 3px #000000, -1em 0 .4em #000000;
     }  
 }
 
@@ -122,6 +124,7 @@ a.active i {
     }
     100% {
         transform: translateX(0%);
+        box-shadow: 3px 3px #000000, -1em 0 .4em #000000;
     }  
 }
 
@@ -130,4 +133,6 @@ a.active i {
     nav {
        width: 80%;
     }
+
+    
  }
