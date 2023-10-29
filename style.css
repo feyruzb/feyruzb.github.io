@@ -55,10 +55,15 @@ a:hover i {
     color: #ffffffff;
     /* width: 30px;
     height: 30px; */
-    
+     
 
     /* background: var(--background); */
 
-    
+
 }
 
+@media screen and (max-width: 720px) {
+    nav {
+       width: 80%;
+    }
+ }
