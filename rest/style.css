@@ -1,0 +1,133 @@
+:root {
+    /* --text: #ffffff;
+    --bg: #6B6B6B;
+    --pr: #FFC91A;
+    --se: #F4911F;
+    --ac: #FF2424; */
+    --text: #ebf8fa;
+    --background: #0a2629;
+    --primary: #ae3a2d;
+    --secondary: #03393f;
+    --accent: #db8c14;
+    --buttonclicked: #1c7c87;
+
+
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+nav {
+    background-color: var(--background);
+    color: var(--text);
+    border: var(--secondary) 2px solid;
+    background-color: var(--accent);
+    width: 30%;
+    height: 3.5rem;
+    margin-top: 1rem;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border-radius: 2rem;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+i {
+    transition: transform 0.3s, color 0.3s;
+    
+}
+
+a i {
+    transform: translateY(0%);
+    color: var(--primary);
+    
+    
+}
+
+a:hover i {
+    transform: translateY(-20%);
+    color: rgb(214, 214, 214);
+
+}
+a.active i {
+    color: var(--buttonclicked);
+}
+.page{
+    min-height: 100vh;
+    height: 100%;
+    padding: 5rem 1rem;
+    overflow-x: hidden; 
+    
+
+}
+.box{
+    border:3px solid #000000;
+    aspect-ratio: 2;
+    border-radius: 2rem;
+     box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.2);
+    background-color: var(--text);
+}
+
+.row :nth-child(even){
+    animation: boxinright ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 3s;
+}
+.row :nth-child(odd){
+    animation: boxinleft ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 2s;
+}
+
+
+
+@keyframes boxinleft {
+    0% {
+        transform: translateX(-100%);
+    }
+    25% {
+        transform: translateX(30%);
+    }
+    50% {
+        transform: translateX(-20%);
+    }
+    75% {
+        transform: translateX(3%);
+    }
+    100% {
+        transform: translateX(0%);
+    }  
+}
+
+@keyframes boxinright {
+    0% {
+        transform: translateX(100%);
+    }
+    25% {
+        transform: translateX(-30%);
+    }
+    50% {
+        transform: translateX(20%);
+    }
+    75% {
+        transform: translateX(-3%);
+    }
+    100% {
+        transform: translateX(0%);
+    }  
+}
+
+
+@media screen and (max-width: 720px) {
+    nav {
+       width: 80%;
+    }
+ }
