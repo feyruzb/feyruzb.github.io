@@ -118,6 +118,7 @@ a.active i {
     justify-content: center;
     align-items: center;
 }
+
 .scroller {
     max-width: 600px;
 }
@@ -128,6 +129,20 @@ a.active i {
     flex-wrap: wrap;
     gap: 1rem;
 }
+
+.tag-list {
+    margin: 0;
+    padding-inline: 0;
+    list-style: none;
+}
+
+.tag-list li {
+    padding: 1rem;
+    background: var(--buttonclicked);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem -0.25rem var(--clr-primary-900);
+}
+
 
 .scroller[data-animated="true"] {
     overflow: hidden;
@@ -231,7 +246,7 @@ a.active i {
 
     .positional_scroller {
         margin-top: 4rem;
-        
+
     }
 
     .box {
