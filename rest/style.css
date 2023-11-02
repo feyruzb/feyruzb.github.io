@@ -1,22 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+
+
 :root {
-    /* --text: #ffffff;
-    --bg: #6B6B6B;
-    --pr: #FFC91A;
-    --se: #F4911F;
-    --ac: #FF2424; */
     --text: #ebf8fa;
     --background: #0a2629;
     --primary: #ae3a2d;
     --secondary: #03393f;
     --accent: #db8c14;
     --buttonclicked: #1c7c87;
-
-
 }
 
 body {
     background-color: var(--background);
     color: var(--text);
+    font-family: 'Ubuntu', sans-serif;
 }
 
 nav {
@@ -41,21 +38,17 @@ header nav {
 }
 
 i {
-    transition: transform 0.3s, color 0.3s;
-    
+    transition: transform 0.3s, color 0.3s; 
 }
 
 a i {
     transform: translateY(0%);
     color: var(--primary);
-    
-    
 }
 
 a:hover i {
     transform: translateY(-20%);
     color: rgb(214, 214, 214);
-
 }
 a.active i {
     color: var(--buttonclicked);
@@ -63,29 +56,49 @@ a.active i {
 .page{
     min-height: 100vh;
     height: 100%;
-    padding: 5rem 1rem;
+    padding: 5vw 1vw;
     overflow-x: hidden; 
-    
-
 }
 .box{
     border:3px solid #000000;
-    aspect-ratio: 2;
-    border-radius: 2rem;
+
+    border-radius: 1.3vw;
     background-color: var(--text);
+    padding: 1vw;
+    color: var(--background);
 }
 
 
 
-.row :nth-child(even) > div{ 
+.row :nth-child(even) > div:not(.icons , .text){ 
     animation: boxinright ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 3s;
 }
-.row :nth-child(odd) > div{
+.row :nth-child(odd) > div:not(.icons , .text){
     animation: boxinleft ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 2s;
+}
+
+.icons > a > i {
+    color: #000000 !important;
+    margin: 0.5rem;
+}
+
+.box > .icons {
+    text-align: right;
+}
+.text{
+    text-align:  center ;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    
+}
+
+.icons > a:hover > i {
+    color: var(--primary) !important;
 }
 
 
@@ -105,7 +118,7 @@ a.active i {
     }
     100% {
         transform: translateX(0%);
-        box-shadow: 3px 3px #000000, -1em 0 .4em #000000;
+
     }  
 }
 
@@ -124,7 +137,7 @@ a.active i {
     }
     100% {
         transform: translateX(0%);
-        box-shadow: 3px 3px #000000, -1em 0 .4em #000000;
+
     }  
 }
 
@@ -133,6 +146,13 @@ a.active i {
     nav {
        width: 80%;
     }
+    .box{
+        border-radius: 0.5rem;
+        margin-top: 3rem;
+        padding: 1rem;
+    }
+
+
 
     
  }
