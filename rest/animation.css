@@ -1,0 +1,36 @@
+.containerSB {  
+    justify-content: start;
+    align-items: flex-start;
+    display: flex;
+    font-family: 'Inter UI', sans-serif;
+    background: transparent;
+    padding-left: 20px;
+
+  }
+  .text {
+    font-weight: bold;
+    font-size: 3rem;
+    color: #00ff66;
+  }
+  .sb {
+    color: #ff0000;
+  }
+
+  .blinker  {
+    animation: blink-caret .75s step-end infinite !important;
+    border: none;
+    border-right: 4px solid black;
+  }
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgb(255, 255, 255); }
+  }
+
+  @media screen and (max-width: 600px) {
+    .display-2{
+        font-size: 2rem;
+    }
+    .text {
+        font-size: 1rem;
+    }
+  }
