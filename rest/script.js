@@ -1,3 +1,4 @@
+
 document.body.onload = () => {
     document.querySelectorAll("nav a").forEach(function(e) {
         if (e.href == window.location) {
@@ -30,3 +31,59 @@ function addAnimation() {
     });
   });
 }
+
+
+//listing projects
+
+fetch('./rest/data.json')
+    .then(response => response.json())
+    .then(obj => obj.projects)
+    
+    // .then(console.log);
+    .then(projects => {
+        for (let project of projects) {
+            let projectDiv = document.createElement('div');
+            projectDiv.className = 'col-md-4 box col-10';
+
+            let projectTitle = document.createElement('h3');
+            projectTitle.className = 'project-title';
+            projectTitle.innerHTML = project.name;
+
+            let projectDescription = document.createElement('p');
+            projectDescription.className = 'project-description';
+            projectDescription.innerHTML = project.description;
+
+            let projectLink = document.createElement('a');
+            projectLink.className = 'project-link';
+            projectLink.href = project.link;
+            projectLink.target = '_blank';
+            projectLink.innerHTML = 'View Project';
+
+            projectDiv.appendChild(projectTitle);
+            projectDiv.appendChild(projectDescription);
+            projectDiv.appendChild(projectLink);
+
+
+            let wrapper = document.createElement('div');
+            wrapper.className = 'col-12 d-flex justify-content-center';
+            wrapper.appendChild(projectDiv);
+            
+
+
+            document.querySelector('.projects').appendChild(wrapper);
+            
+        }
+    })
+    .catch(error => console.error('Error:', error));
+{/* <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <div class="col-md-4 box col-10">
+          <img class="img-fluid" src="rest/photo-horizontal.jpg" alt="Feyruz Baghirov">
+        </div>
+      </div>
+    </div> */}
+
+
+
+
+    

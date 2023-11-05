@@ -1,0 +1,31 @@
+{
+    "projects":
+    [
+        {
+            "name": "Budget Tracking Application",
+            "description": "The goal was to create online application for tracking the spending and income from various places for a person",
+            "language": "LARAVEL(full stack)",
+            "link": "https://github.com/feyruzb/budget_tracker"
+        },
+        {
+            "name": "Canvas Simulator",
+            "description": "That is a web application designed to simulate a popular learning management system. It allows users to engage in student-teacher interactions by creating subjects, signing up for subjects, and managing tasks. Different actions are available for students and teachers within the system.",
+            "language": "ANGULAR(FRONTEND) AND LARAVEL(BACKEND)",
+            "link": "https://github.com/feyruzb/canvas_simulator"
+
+        },
+        {
+            "name": "Package traking service",
+            "description": "The goal was to create online application for tracking packages",
+            "language": "NodeJs",
+            "link": "https://github.com/mamedov6119/TrackNParcel"
+        },
+        {
+            "name": "Hacat",
+            "description": "Online application that allows users to assemble their PC's with the budget that they provide",
+            "language": "Vuejs,Python,DevOps",
+            "link": "https://github.com/mamedov6119/HaCat"
+        }
+
+    ]
+}

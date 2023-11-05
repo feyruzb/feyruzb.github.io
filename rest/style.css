@@ -195,7 +195,11 @@ a.active i {
         transform: translate(calc(-50% - 0.5rem));
     }
 }
+/* projects page */
 
+.projects {
+    padding-top: 4%;
+}
 
 
 /* my animations */
