@@ -31,7 +31,14 @@ function addAnimation() {
     });
   });
 }
-
+// photo choosing
+window.onload = function() {
+let photos = ["photo-horizontal.jpg", "stylish.jpg"];
+let photo = document.querySelector("#photo");
+if (photo) {
+  photo.src = "rest/" + photos[Math.floor(Math.random() * photos.length)];
+}
+}
 
 //listing projects
 
@@ -96,5 +103,3 @@ fetch('./rest/data.json')
 //     })
 //     .catch(error => console.error('Error:', error));
 
-
-    
