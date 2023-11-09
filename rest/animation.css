@@ -27,10 +27,13 @@
   }
 
   @media screen and (max-width: 600px) {
-    .display-3{
-        font-size: 1.35rem;
-    }
     .text {
         font-size: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .text {
+        font-size: 2rem;
     }
   }

@@ -256,6 +256,20 @@ a.active i {
 }
 
 
+@media screen and (max-width: 879px) {
+    .display-3 {
+        font-size: 2.8rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .display-3 {
+        font-size: 1.2rem;
+        margin-top: 5em !important;
+    }
+    
+}
+
 @media screen and (max-width: 720px) {
     nav {
         width: 80%;
