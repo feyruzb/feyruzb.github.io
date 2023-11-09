@@ -294,3 +294,11 @@ a.active i {
         padding: 1rem;
     }
 }
+
+
+@media screen and (min-width: 1220px) {
+    .positional_scroller {
+        padding-top: 0.5rem !important;
+    }
+    
+}
