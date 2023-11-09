@@ -264,7 +264,15 @@ a.active i {
 
 @media screen and (max-width: 768px) {
     .display-3 {
-        font-size: 1.2rem;
+        font-size: 2rem;
+        margin-top: 5em !important;
+    }
+    
+}
+
+@media screen and (max-width: 528px) {
+    .display-3 {
+        font-size: 1.4rem;
         margin-top: 5em !important;
     }
     
