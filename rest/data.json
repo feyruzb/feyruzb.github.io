@@ -25,6 +25,12 @@
             "description": "Online application that allows users to assemble their PC's with the budget that they provide",
             "language": "Vuejs,Python,DevOps",
             "link": "https://github.com/mamedov6119/HaCat"
+        },
+        {
+            "name": "Commune",
+            "description": "We are Link Up is your gateway to cutting-edge communication. With innovative technology and tailored solutions, we redefine connectivity. At Link Up, we're not just a service provider; we're your dedicated partner in seamless communication.",
+            "language": "Vuejs",
+            "link": "https://github.com/mamedov6119/link-up-junctionx"
         }
 
     ]

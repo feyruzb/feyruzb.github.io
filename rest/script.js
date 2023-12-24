@@ -24,7 +24,7 @@ function addAnimation() {
 }
 // photo choosing
 window.onload = function() {
-  let photos = ["photo-horizontal.jpg", "stylish.jpg"];
+  let photos = ["photo-horizontal.jpg"];
   let photo = document.querySelector("#photo");
   if (photo) {
     photo.src = "rest/" + photos[Math.floor(Math.random() * photos.length)];
