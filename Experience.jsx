@@ -57,7 +57,7 @@ const Experience = () => {
       last: false,
     },
     {
-      period: 'Feb 2023 – Jul 2024',
+      period: 'Feb 2023 – Jul 2023',
       company: 'Ericsson',
       title: 'Software Developer Intern',
       subtitle: '@BNEW SAN · CodeChecker',

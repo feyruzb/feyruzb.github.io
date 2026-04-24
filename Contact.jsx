@@ -78,7 +78,7 @@ const Contact = () => {
           fontSize: 11,
           color: '#4a4845',
         }}>
-          <span>© 2025 Feyruz Baghirov</span>
+          <span>© 2026 Feyruz Baghirov</span>
           <span>feyruz.dev</span>
         </div>
       </div>

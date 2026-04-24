@@ -68,7 +68,7 @@ const Hero = ({ onNav }) => {
             lineHeight: 1.8,
             maxWidth: 380,
           }}>
-            I write C++ that ships to 3,000 engineers. I also taught myself enough of everything else to be dangerous.
+            I write <span style={{ color: '#d4a853', fontWeight: 500 }}>python code</span> that ships to 3,000 engineers. I also taught myself enough of everything else to be dangerous.
           </p>
         </div>
 
@@ -81,7 +81,7 @@ const Hero = ({ onNav }) => {
           {[
             { num: '2yr', label: 'at Ericsson' },
             { num: '28', label: 'LLVM files' },
-            { num: '2.5k', label: 'GH stars' },
+            { num: 'llvm:main', label: 'merged' },
           ].map(({ num, label }) => (
             <div key={label}>
               <div style={{
@@ -129,7 +129,7 @@ const Hero = ({ onNav }) => {
           bottom: 40,
           right: 40,
           letterSpacing: '0.08em',
-        }}>Budapest · 2025</div>
+        }}>Budapest · 2026</div>
       </div>
     </section>
   );
