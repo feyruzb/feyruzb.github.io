@@ -1,30 +1,74 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feyruz Baghirov</title>
+  <title>Feyruz Baghirov - Software Developer</title>
+  <meta name="description" content="Software developer based in Budapest. Upstream LLVM/Clang contributor. Building tools used by thousands of engineers at Ericsson.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Feyruz Baghirov - Software Developer">
+  <meta property="og:description" content="Upstream LLVM/Clang contributor. Building tools used by ~3,000 engineers at Ericsson.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://feyruz.dev">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Feyruz Baghirov - Software Developer">
+  <meta name="twitter:description" content="Upstream LLVM/Clang contributor. Building tools used by ~3,000 engineers at Ericsson.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0a09'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='18' font-style='italic' fill='%23d4a853'>fb</text></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <script src="https://kit.fontawesome.com/1ef44b5be1.js" crossorigin="anonymous"></script>
-
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: #0a0a09; color: #ede9e0; font-family: 'Space Grotesk', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body {
+      background: #0a0a09;
+      color: #ede9e0;
+      font-family: 'Space Grotesk', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
     a { text-decoration: none; }
+
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
-    .reveal.in { opacity: 1; transform: translateY(0); }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+    @keyframes glowPulse { 0%,100% { box-shadow: 0 0 8px rgba(212,168,83,0.4); } 50% { box-shadow: 0 0 16px rgba(212,168,83,0.7); } }
+
+    .reveal { opacity:0; transform:translateY(28px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.in { opacity:1; transform:translateY(0); }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr !important; }
+      .hero-photo { min-height: 55vw; border-right: none !important; border-bottom: 1px solid #252523 !important; order: -1; }
+      .hero-content { padding: 72px 28px 48px !important; justify-content: flex-start !important; }
+      .exp-grid { grid-template-columns: 1fr !important; }
+      .exp-meta { padding-right: 0 !important; margin-bottom: 6px; }
+      .exp-timeline-dot { display: none !important; }
+      .exp-timeline-line { display: none !important; }
+      .exp-body { padding-left: 0 !important; }
+      .proj-featured { grid-template-columns: 1fr !important; }
+      .proj-small { grid-template-columns: 1fr 1fr !important; }
+      .about-grid { grid-template-columns: 1fr !important; }
+      .about-sticky { position: static !important; }
+      .contact-grid { grid-template-columns: 1fr !important; }
+      .nav-inner { padding: 16px 24px !important; }
+      .nav-links { gap: 20px !important; }
+      .section-pad { padding: 64px 24px !important; }
+    }
+    @media (max-width: 520px) {
+      .proj-small { grid-template-columns: 1fr !important; }
+      .proj-small-item { border-right: none !important; border-bottom: 1px solid #252523; }
+    }
   </style>
 
   <script>
@@ -33,24 +77,754 @@
         entries.forEach(e => {
           if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
         });
-      }, { threshold: 0.08 });
-      setTimeout(() => {
-        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-      }, 800);
+      }, { threshold: 0.06 });
+      setTimeout(() => document.querySelectorAll('.reveal').forEach(el => obs.observe(el)), 500);
     });
   </script>
 </head>
-
 <body>
   <div id="root"></div>
 
-  <script type="text/babel" src="Nav.jsx"></script>
-  <script type="text/babel" src="Hero.jsx"></script>
-  <script type="text/babel" src="Experience.jsx"></script>
-  <script type="text/babel" src="Projects.jsx"></script>
-  <script type="text/babel" src="About.jsx"></script>
-  <script type="text/babel" src="Contact.jsx"></script>
-  <script type="text/babel" src="App.jsx"></script>
-</body>
+  <script type="text/babel">
+    const { useState, useEffect, useRef, useCallback } = React;
 
+    /* ─── SCROLL PROGRESS ──────────────────────────────────────────── */
+    const ScrollProgress = () => {
+      const [pct, setPct] = useState(0);
+      useEffect(() => {
+        const onScroll = () => {
+          const total = document.documentElement.scrollHeight - window.innerHeight;
+          setPct(total > 0 ? (window.scrollY / total) * 100 : 0);
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+      }, []);
+      return (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, zIndex: 300,
+          height: 2, width: `${pct}%`,
+          background: 'linear-gradient(90deg, #d4a853, rgba(212,168,83,0.6))',
+          boxShadow: '0 0 10px rgba(212,168,83,0.5)',
+          transition: 'width 0.08s linear',
+          pointerEvents: 'none',
+        }} />
+      );
+    };
+
+    /* ─── NAV ──────────────────────────────────────────────────────── */
+    const Nav = ({ active, onNav }) => {
+      const [scrolled, setScrolled] = useState(false);
+      const [menuOpen, setMenuOpen] = useState(false);
+
+      useEffect(() => {
+        const h = () => setScrolled(window.scrollY > 40);
+        window.addEventListener('scroll', h, { passive: true });
+        return () => window.removeEventListener('scroll', h);
+      }, []);
+
+      const handleNav = (id) => { setMenuOpen(false); onNav(id); };
+
+      return (
+        <>
+          <nav style={{
+            position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+            padding: '20px 48px',
+            background: (scrolled || menuOpen) ? 'rgba(10,10,9,0.97)' : 'transparent',
+            backdropFilter: (scrolled || menuOpen) ? 'blur(18px)' : 'none',
+            WebkitBackdropFilter: (scrolled || menuOpen) ? 'blur(18px)' : 'none',
+            borderBottom: (scrolled || menuOpen) ? '1px solid #252523' : '1px solid transparent',
+            transition: 'background 0.4s, border-color 0.4s',
+          }}>
+            <button onClick={() => handleNav('home')} style={{
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 13,
+              color: '#8a8780', background: 'none', border: 'none', cursor: 'pointer',
+            }}>
+              <span style={{ color: '#d4a853' }}>fb</span> / feyruz baghirov
+            </button>
+
+            {/* Desktop links */}
+            <div className="nav-desktop" style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
+              {['experience','projects','about','contact'].map(id => (
+                <NavLink key={id} id={id} active={active} onNav={handleNav} />
+              ))}
+              <a href="CV.pdf" download style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+                letterSpacing: '0.08em', textTransform: 'uppercase',
+                border: '1px solid #333330', color: '#4a4845',
+                padding: '5px 12px', display: 'inline-flex', alignItems: 'center', gap: 6,
+                transition: 'all 0.2s', textDecoration: 'none',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor='#d4a853'; e.currentTarget.style.color='#d4a853'; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor='#333330'; e.currentTarget.style.color='#4a4845'; }}>
+                <svg width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M5 1v7M2 6l3 3 3-3M1 10h8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                CV
+              </a>
+              <GitHubButton />
+            </div>
+
+            {/* Hamburger */}
+            <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} style={{
+              display: 'none', background: 'none', border: 'none', cursor: 'pointer',
+              padding: 4, flexDirection: 'column', gap: 5, alignItems: 'flex-end',
+            }}>
+              <span style={{ display: 'block', width: 22, height: 1, background: menuOpen ? '#d4a853' : '#8a8780', transition: 'all 0.2s', transform: menuOpen ? 'rotate(45deg) translate(4px, 4px)' : 'none' }} />
+              <span style={{ display: 'block', width: 16, height: 1, background: menuOpen ? '#d4a853' : '#8a8780', transition: 'all 0.2s', opacity: menuOpen ? 0 : 1 }} />
+              <span style={{ display: 'block', width: 22, height: 1, background: menuOpen ? '#d4a853' : '#8a8780', transition: 'all 0.2s', transform: menuOpen ? 'rotate(-45deg) translate(4px, -4px)' : 'none' }} />
+            </button>
+          </nav>
+
+          {/* Mobile menu drawer */}
+          <div className="nav-drawer" style={{
+            position: 'fixed', top: 61, left: 0, right: 0, zIndex: 99,
+            background: 'rgba(10,10,9,0.97)', backdropFilter: 'blur(18px)',
+            borderBottom: menuOpen ? '1px solid #252523' : 'none',
+            display: 'none',
+            flexDirection: 'column',
+            padding: menuOpen ? '24px 28px 32px' : '0 28px',
+            gap: 0,
+            maxHeight: menuOpen ? '400px' : '0',
+            overflow: 'hidden',
+            transition: 'max-height 0.35s cubic-bezier(0.16,1,0.3,1)',
+          }}>
+            {['experience','projects','about','contact'].map((id, i) => (
+              <a key={id} href={`#${id}`}
+                onClick={e => { e.preventDefault(); handleNav(id); }}
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 13,
+                  color: active === id ? '#d4a853' : '#8a8780',
+                  letterSpacing: '0.08em', textTransform: 'uppercase',
+                  padding: '14px 0',
+                  borderBottom: i < 3 ? '1px solid #1c1c1a' : 'none',
+                  transition: 'color 0.2s',
+                }}>{id}</a>
+            ))}
+            <a href="CV.pdf" download
+              style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: '#8a8780', letterSpacing: '0.08em', textTransform: 'uppercase', padding: '14px 0', borderBottom: '1px solid #1c1c1a', transition: 'color 0.2s', display: 'flex', alignItems: 'center', gap: 8 }}>
+              <svg width="11" height="12" viewBox="0 0 11 12" fill="none"><path d="M5.5 1v8M2 7l3.5 3.5L9 7M1 11h9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              Download CV
+            </a>
+            <a href="https://github.com/feyruzb" target="_blank" rel="noopener noreferrer"
+              style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: '#d4a853', letterSpacing: '0.08em', textTransform: 'uppercase', paddingTop: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+              </svg>
+              GitHub ↗
+            </a>
+          </div>
+
+          <style>{`
+            @media (max-width: 768px) {
+              .nav-desktop { display: none !important; }
+              .nav-hamburger { display: flex !important; }
+              .nav-drawer { display: flex !important; }
+              nav { padding: 18px 24px !important; }
+            }
+          `}</style>
+        </>
+      );
+    };
+
+    const NavLink = ({ id, active, onNav }) => {
+      const [hov, setHov] = useState(false);
+      const isActive = active === id;
+      return (
+        <a href={`#${id}`}
+          onClick={e => { e.preventDefault(); onNav(id); }}
+          onMouseEnter={() => setHov(true)}
+          onMouseLeave={() => setHov(false)}
+          style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
+            color: isActive ? '#d4a853' : hov ? '#ede9e0' : '#4a4845',
+            letterSpacing: '0.08em', textTransform: 'uppercase',
+            cursor: 'pointer', transition: 'color 0.2s',
+            position: 'relative', paddingBottom: 3,
+          }}>
+          {id}
+          <span style={{
+            position: 'absolute', bottom: 0, left: 0, right: 0, height: 1,
+            background: '#d4a853',
+            transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
+            transformOrigin: 'left',
+            transition: 'transform 0.3s cubic-bezier(0.16,1,0.3,1)',
+          }} />
+        </a>
+      );
+    };
+
+    const GitHubButton = () => {
+      const [hov, setHov] = useState(false);
+      return (
+        <a href="https://github.com/feyruzb" target="_blank" rel="noopener noreferrer"
+          onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+          style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
+            letterSpacing: '0.08em', textTransform: 'uppercase',
+            border: `1px solid ${hov ? '#d4a853' : '#333330'}`,
+            color: hov ? '#d4a853' : '#8a8780',
+            padding: '6px 14px',
+            display: 'inline-flex', alignItems: 'center', gap: 7,
+            transition: 'all 0.2s', background: 'transparent',
+          }}>
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          GitHub
+        </a>
+      );
+    };
+
+    const useCountUp = (target, duration = 1200, delay = 0, isNum = true) => {
+      const [val, setVal] = useState(isNum ? 0 : target);
+      useEffect(() => {
+        if (!isNum) return;
+        const t = setTimeout(() => {
+          const start = performance.now();
+          const tick = (now) => {
+            const p = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - p, 3);
+            setVal(Math.round(ease * target));
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }, delay);
+        return () => clearTimeout(t);
+      }, [target, duration, delay, isNum]);
+      return val;
+    };
+
+    /* ─── HERO ─────────────────────────────────────────────────────── */
+    const StatItem = ({ num, label, isNum, visible }) => {
+      const counted = useCountUp(isNum ? num : 0, 1400, 600, isNum);
+      return (
+        <div>
+          <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 26, color: '#ede9e0' }}>
+            {isNum ? counted : num}
+          </div>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a4845', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{label}</div>
+        </div>
+      );
+    };
+
+    const Hero = ({ onNav }) => {
+      const [visible, setVisible] = useState(false);
+      const [mouse, setMouse] = useState({ x: -999, y: -999 });
+      const sectionRef = useRef(null);
+
+      useEffect(() => { const t = setTimeout(() => setVisible(true), 80); return () => clearTimeout(t); }, []);
+
+      const onMouseMove = useCallback((e) => {
+        const r = sectionRef.current?.getBoundingClientRect();
+        if (!r) return;
+        setMouse({ x: e.clientX - r.left, y: e.clientY - r.top });
+      }, []);
+
+      const fade = (d) => ({
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(22px)',
+        transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${d}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${d}ms`,
+      });
+
+      return (
+        <section ref={sectionRef} className="hero-grid" onMouseMove={onMouseMove}
+          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
+
+          {/* Cursor glow overlay */}
+          <div style={{
+            position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1,
+            background: `radial-gradient(650px at ${mouse.x}px ${mouse.y}px, rgba(212,168,83,0.07), transparent 70%)`,
+          }} />
+
+          {/* LEFT: content */}
+          <div className="hero-content" style={{
+            padding: '80px 48px 64px', borderRight: '1px solid #252523',
+            display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
+            position: 'relative', zIndex: 2,
+          }}>
+            {/* Subtle grid overlay */}
+            <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.025, backgroundImage: 'linear-gradient(#ede9e0 1px, transparent 1px), linear-gradient(90deg, #ede9e0 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
+
+            <div style={{ ...fade(0), display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+              <div style={{ width: 32, height: 1, background: '#d4a853', flexShrink: 0 }} />
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#d4a853', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+                Software Developer · Budapest
+              </span>
+            </div>
+
+            <div style={{ marginBottom: 32 }}>
+              <div style={{ ...fade(100), fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontSize: 'clamp(3.5rem, 6.5vw, 6.5rem)', lineHeight: 0.95, color: '#ede9e0' }}>Feyruz</div>
+              <div style={{ ...fade(160), fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 'clamp(3.5rem, 6.5vw, 6.5rem)', lineHeight: 0.95, color: '#d4a853' }}>Baghirov.</div>
+            </div>
+
+            <div style={{ ...fade(260), borderLeft: '2px solid #333330', paddingLeft: 20, marginBottom: 44 }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 15, color: '#8a8780', lineHeight: 1.8, maxWidth: 380 }}>
+                I write code that lands in <span style={{ color: '#d4a853', fontWeight: 500 }}>LLVM</span> and ships to <span style={{ color: '#d4a853', fontWeight: 500 }}>3,000</span> engineers. Sometimes I also teach it.
+              </p>
+            </div>
+
+            <div style={{ ...fade(360), display: 'flex', gap: 12, marginBottom: 56, flexWrap: 'wrap' }}>
+              <HeroButton onClick={() => onNav('experience')} primary>See My Work →</HeroButton>
+              <HeroButton onClick={() => onNav('contact')} primary={false}>Get in Touch</HeroButton>
+              <a href="CV.pdf" download style={{
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
+                textTransform: 'uppercase', letterSpacing: '0.08em',
+                border: '1px solid #252523', color: '#4a4845',
+                padding: '12px 20px', display: 'inline-flex', alignItems: 'center', gap: 8,
+                transition: 'all 0.2s', textDecoration: 'none',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor='#d4a853'; e.currentTarget.style.color='#d4a853'; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor='#252523'; e.currentTarget.style.color='#4a4845'; }}>
+                <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5.5 1v8M2 6.5l3.5 3.5 3.5-3.5M1 12h9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                CV
+              </a>
+            </div>
+
+            <div style={{ ...fade(460), display: 'flex', gap: 36 }}>
+              {[{ num: '2yr', label: 'at Ericsson', isNum: false },{ num: 28, label: 'LLVM files', isNum: true },{ num: 'llvm:main', label: 'merged', isNum: false }].map(({ num, label, isNum }) => (
+                <StatItem key={label} num={num} label={label} isNum={isNum} visible={visible} />
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT: photo */}
+          <div className="hero-photo" style={{ position: 'relative', overflow: 'hidden' }}>
+            <img src="img/photo.jpg" alt="Feyruz Baghirov" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', filter: 'grayscale(20%) brightness(0.58)', display: 'block' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(10,10,9,0.45) 0%, transparent 55%, rgba(10,10,9,0.15) 100%)' }} />
+            {/* Gold bottom accent */}
+            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, #d4a853 0%, transparent 70%)' }} />
+
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: 'rgba(237,233,224,0.3)', writingMode: 'vertical-rl', position: 'absolute', bottom: 40, right: 40, letterSpacing: '0.08em' }}>Budapest · 2026</div>
+          </div>
+        </section>
+      );
+    };
+
+    const HeroButton = ({ children, onClick, primary }) => {
+      const [hov, setHov] = useState(false);
+      return (
+        <button onClick={onClick}
+          onMouseEnter={() => setHov(true)}
+          onMouseLeave={() => setHov(false)}
+          style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
+            textTransform: 'uppercase', letterSpacing: '0.08em',
+            border: primary ? 'none' : `1px solid ${hov ? '#d4a853' : '#333330'}`,
+            background: primary ? (hov ? '#ede9e0' : '#d4a853') : 'transparent',
+            color: primary ? '#0a0a09' : (hov ? '#d4a853' : '#8a8780'),
+            padding: '12px 24px', cursor: 'pointer',
+            transition: 'all 0.2s',
+            transform: hov ? 'translateY(-1px)' : 'none',
+          }}>{children}</button>
+      );
+    };
+
+    /* ─── MARQUEE BAND ─────────────────────────────────────────────── */
+    const MarqueeBand = () => {
+      const skills = ['Java','TypeScript','C/C++','Spring Boot','Angular','LLVM','Clang','Docker','OAuth2','Microsoft Entra ID','Oracle Cloud','Python','Flask','React','Svelte','SQL','Git'];
+      const doubled = [...skills, ...skills];
+      return (
+        <div style={{ borderTop: '1px solid #252523', borderBottom: '1px solid #252523', overflow: 'hidden', background: '#0d0d0c' }}>
+          <div style={{ padding: '13px 0', overflow: 'hidden' }}>
+            <div style={{ display: 'flex', whiteSpace: 'nowrap', animation: 'marquee 30s linear infinite' }}>
+              {doubled.map((s, i) => (
+                <React.Fragment key={i}>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#4a4845', padding: '0 28px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{s}</span>
+                  <span style={{ color: '#d4a853', lineHeight: 1 }}>·</span>
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    /* ─── EXPERIENCE ───────────────────────────────────────────────── */
+    const Experience = () => {
+      const Tag = ({ children }) => (
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a4845', border: '1px solid #252523', padding: '3px 10px' }}>{children}</span>
+      );
+      const Bullet = ({ children, highlight }) => (
+        <li style={{
+          position: 'relative',
+          paddingLeft: highlight ? 24 : 16,
+          paddingRight: highlight ? 14 : 0,
+          paddingTop: highlight ? 8 : 0,
+          paddingBottom: highlight ? 8 : 0,
+          listStyle: 'none',
+          marginBottom: 8,
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontSize: 14,
+          color: '#8a8780',
+          lineHeight: 1.7,
+          background: highlight ? 'rgba(234, 179, 8, 0.12)' : 'transparent',
+          borderLeft: highlight ? '2px solid #eab308' : 'none',
+        }}>
+          <span style={{ position: 'absolute', left: highlight ? 10 : 0, top: highlight ? 8 : 0 }}>-</span>{children}
+        </li>
+      );
+      const B = ({ children }) => <strong style={{ color: '#ede9e0', fontWeight: 500 }}>{children}</strong>;
+
+      const items = [
+        {
+          period: 'Jul 2024 – Present', company: 'Ericsson',
+          title: 'Software Developer', subtitle: '@BNEW SAN · CodeChecker',
+          llvmHighlight: true,
+          bullets: [
+            <Bullet key={1} highlight>Contributed upstream to <B>LLVM/Clang</B>: refactored memory-error diagnostics across <B>28 files</B> in Clang Static Analyzer, clang-tidy, and clang-tools-extra - merged into <B>llvm:main</B>.</Bullet>,
+            <Bullet key={2}>Delivered production <B>OAuth2 integration</B> (Google, Microsoft, GitHub) using BFF architecture with Microsoft Entra ID - securing a platform with 2.5k+ stars used by <B>~3,000 engineers</B>.</Bullet>,
+            <Bullet key={3}>Designed and shipped the <B>Filter Preset feature</B> end-to-end: save, manage, and apply named filter configurations across the platform.</Bullet>,
+            <Bullet key={4}>Implemented a <B>Thrift API version consistency check</B> in CI to detect virtual environment mismatches, preventing silent runtime failures.</Bullet>,
+          ],
+          tags: ['C++', 'Python', 'TypeScript', 'LLVM', 'OAuth2', 'Microsoft Entra ID'],
+        },
+        {
+          period: 'Aug 2025 – Present', company: 'ELTE',
+          title: 'Practice Teacher', subtitle: 'Eötvös Loránd University',
+          bullets: [
+            <Bullet key={1}><B>OOP / Java</B> (Feb 2026–Jul 2026): Weekly practice sessions on core OOP principles; review and grade projects with Javadoc and unit tests.</Bullet>,
+            <Bullet key={2}><B>Telecommunication Networks</B> (Sep–Jan 2026): TCP/UDP, socket programming, Wireshark, subnetting; lab sessions using Mininet and Linux networking tools.</Bullet>,
+          ],
+          tags: ['Java', 'OOP', 'TCP/IP', 'Mininet', 'Linux'],
+        },
+        {
+          period: 'Feb 2023 – Jul 2023', company: 'Ericsson',
+          title: 'Software Developer Intern', subtitle: '@BNEW SAN · CodeChecker',
+          bullets: [
+            <Bullet key={1}>Designed and implemented the <B>initial OAuth2 authentication framework</B> for CodeChecker - integrated Google, Microsoft, and GitHub identity providers; established the security architecture later delivered to production.</Bullet>,
+          ],
+          tags: ['Python', 'OAuth2', 'CodeChecker'],
+        },
+      ];
+
+      return (
+        <section className="section-pad" style={{ background: '#0d0d0c', borderTop: '1px solid #252523', borderBottom: '1px solid #252523', padding: '88px 48px' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '1px solid #252523', paddingBottom: 20, marginBottom: 56 }}>
+              <div>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a4845', textTransform: 'uppercase', marginBottom: 8 }}>Work</div>
+                <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 'clamp(1.8rem, 3.5vw, 3rem)', letterSpacing: '-0.03em', color: '#ede9e0' }}>Experience</h2>
+              </div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#4a4845' }}>Budapest, Hungary</div>
+            </div>
+
+            <div style={{ position: 'relative' }}>
+              {/* Vertical timeline line */}
+              <div className="exp-timeline-line" style={{ position: 'absolute', left: 199, top: 10, bottom: 10, width: 1, background: 'linear-gradient(to bottom, transparent, #252523 8%, #252523 90%, transparent)' }} />
+
+              {items.map((item, idx) => (
+                <div key={idx} className="exp-grid" style={{ display: 'grid', gridTemplateColumns: '200px 1fr', padding: '40px 0', borderBottom: idx < items.length - 1 ? '1px solid #1c1c1a' : 'none', position: 'relative' }}>
+                  {/* Timeline dot */}
+                  <div className="exp-timeline-dot" style={{ position: 'absolute', left: 196, top: 46, width: 7, height: 7, borderRadius: '50%', background: '#d4a853', animation: 'glowPulse 3s ease-in-out infinite', zIndex: 1 }} />
+
+                  <div className="exp-meta" style={{ paddingRight: 24 }}>
+                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#d4a853', marginBottom: 4 }}>{item.period}</div>
+                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#4a4845' }}>{item.company}</div>
+                  </div>
+                  <div className="exp-body" style={{ paddingLeft: 32 }}>
+                    <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 17, color: '#ede9e0', marginBottom: 4 }}>{item.title}</div>
+                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#3dcfbe', marginBottom: 16 }}>{item.subtitle}</div>
+                  
+                    <ul style={{ padding: 0, margin: '0 0 16px 0' }}>{item.bullets}</ul>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                      {item.tags.map(t => <Tag key={t}>{t}</Tag>)}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    /* ─── PROJECTS ─────────────────────────────────────────────────── */
+    const Projects = () => {
+      const cardPatterns = {
+        '001': { lines: ['def alert(group, meal):', '  notify(group.members)', '  track(order)', '  return status'], color: '#d4a853' },
+        '002': { lines: ['// Clang Static Analyzer', 'DiagnosticBuilder B =', '  Diag(Loc, Desc);', 'B << MemRegion;'], color: '#3dcfbe' },
+      };
+
+      const FeaturedCard = ({ num, name, description, lang, href, badgeText, isOpenSource }) => {
+        const [hov, setHov] = useState(false);
+        const [tilt, setTilt] = useState({ x: 0, y: 0 });
+        const ref = useRef(null);
+        const bc = isOpenSource ? '#3dcfbe' : '#d4a853';
+        const bb = isOpenSource ? 'rgba(61,207,190,0.07)' : 'rgba(212,168,83,0.08)';
+        const bbo = isOpenSource ? 'rgba(61,207,190,0.2)' : 'rgba(212,168,83,0.2)';
+
+        const onMM = (e) => {
+          const r = ref.current?.getBoundingClientRect();
+          if (!r) return;
+          const x = ((e.clientX - r.left) / r.width - 0.5) * 10;
+          const y = ((e.clientY - r.top) / r.height - 0.5) * 10;
+          setTilt({ x: y, y: x });
+        };
+
+        return (
+          <a ref={ref} href={href} target="_blank" rel="noopener noreferrer"
+            onMouseEnter={() => setHov(true)}
+            onMouseLeave={() => { setHov(false); setTilt({ x: 0, y: 0 }); }}
+            onMouseMove={onMM}
+            style={{
+              background: hov ? '#161614' : '#0d0d0c',
+              border: `1px solid ${hov ? 'rgba(212,168,83,0.3)' : '#252523'}`,
+              padding: 32, display: 'block', position: 'relative', overflow: 'hidden',
+              textDecoration: 'none',
+              transition: 'background 0.2s, border-color 0.25s, box-shadow 0.25s',
+              transform: hov ? `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-3px)` : 'perspective(900px) rotateX(0) rotateY(0)',
+              boxShadow: hov ? '0 20px 60px rgba(0,0,0,0.5)' : 'none',
+            }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, #d4a853, rgba(212,168,83,0.2))', transform: `scaleX(${hov ? 1 : 0})`, transformOrigin: 'left', transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1)' }} />
+
+            {/* Subtle code pattern */}
+            {cardPatterns[num] && (
+              <div style={{ position: 'absolute', bottom: 0, right: 0, width: 180, padding: '16px 20px', opacity: hov ? 0.12 : 0.06, transition: 'opacity 0.3s', pointerEvents: 'none', fontFamily: "'JetBrains Mono', monospace", fontSize: 10, lineHeight: 1.8, color: cardPatterns[num].color, whiteSpace: 'pre', textAlign: 'right' }}>
+                {cardPatterns[num].lines.join('\n')}
+              </div>
+            )}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: bc, background: bb, border: `1px solid ${bbo}`, padding: '4px 10px', marginBottom: 20 }}>
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: bc, animation: 'pulse 2s infinite' }} />
+              {badgeText}
+            </div>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a4845', marginBottom: 14 }}>Featured · {num}</div>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 20, color: '#ede9e0', marginBottom: 10 }}>{name}</div>
+            <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: '#8a8780', lineHeight: 1.7, marginBottom: 20 }}>{description}</p>
+            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#3dcfbe', background: 'rgba(61,207,190,0.07)', padding: '4px 12px' }}>{lang}</span>
+            <div style={{ position: 'absolute', bottom: 24, right: 24, fontSize: 16, color: hov ? '#d4a853' : '#4a4845', transition: 'all 0.2s', transform: hov ? 'translate(3px, -3px)' : 'none' }}>↗</div>
+          </a>
+        );
+      };
+
+      const SmallCard = ({ num, name, description, lang, href, isLast }) => {
+        const [hov, setHov] = useState(false);
+        return (
+          <a href={href} target="_blank" rel="noopener noreferrer"
+            className="proj-small-item"
+            onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+            style={{
+              padding: 24, borderRight: isLast ? 'none' : '1px solid #252523',
+              display: 'block', background: hov ? '#111110' : 'transparent',
+              position: 'relative', textDecoration: 'none', transition: 'background 0.2s',
+            }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: '#d4a853', transform: hov ? 'scaleX(1)' : 'scaleX(0)', transformOrigin: 'left', transition: 'transform 0.3s cubic-bezier(0.16,1,0.3,1)' }} />
+            <div style={{ position: 'absolute', top: 20, right: 20, color: hov ? '#d4a853' : '#4a4845', fontSize: 14, transition: 'all 0.2s', transform: hov ? 'translate(2px,-2px)' : 'none' }}>↗</div>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a4845', marginBottom: 10 }}>{num}</div>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 15, color: '#ede9e0', marginBottom: 8, paddingRight: 24 }}>{name}</div>
+            <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: '#8a8780', lineHeight: 1.6, marginBottom: 12 }}>{description}</p>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#3dcfbe' }}>{lang}</div>
+          </a>
+        );
+      };
+
+      const smallCards = [
+        { num: '003', name: 'Budget Tracker', description: 'Track spending and income across multiple sources.', lang: 'Laravel', href: 'https://github.com/feyruzb/budget_tracker' },
+        { num: '004', name: 'Canvas Simulator', description: 'LMS with student/teacher interactions and task management.', lang: 'Angular · Laravel', href: 'https://github.com/feyruzb/canvas_simulator' },
+        { num: '005', name: 'Package Tracker', description: 'Real-time package tracking web application.', lang: 'NodeJS', href: 'https://github.com/mamedov6119/TrackNParcel' },
+        { num: '006', name: 'HaCat', description: 'PC builder assistant within a specified budget.', lang: 'Vue · Python · DevOps', href: 'https://github.com/mamedov6119/HaCat' },
+      ];
+
+      return (
+        <section className="section-pad" style={{ padding: '88px 48px' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '1px solid #252523', paddingBottom: 20, marginBottom: 56 }}>
+              <div>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a4845', textTransform: 'uppercase', marginBottom: 8 }}>Work</div>
+                <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 'clamp(1.8rem, 3.5vw, 3rem)', letterSpacing: '-0.03em', color: '#ede9e0' }}>Projects</h2>
+              </div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#4a4845' }}>06 selected</div>
+            </div>
+
+            <div className="proj-featured" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+              <FeaturedCard num="001" name="Burger Alert" description="Group lunch ordering and car-pool coordination for the office. Self-hosted on Oracle Cloud using Docker and Caddy. 18 GitHub stars, 3 releases - used daily by colleagues." lang="Python · Flask · Docker · Oracle Cloud" href="https://github.com/feyruzb/burger-alert" badgeText="Live in production" isOpenSource={false} />
+              <FeaturedCard num="002" name="CodeChecker" description="Contributed OAuth2 integration (BFF + Entra ID), Filter Presets, and LLVM refactors across 28 files merged into llvm:main. 2.5k+ GitHub stars - used by ~3,000 engineers at Ericsson." lang="C++ · Python · TypeScript · LLVM · JavaScript · Vue" href="https://github.com/Ericsson/codechecker" badgeText="Open source · Ericsson" isOpenSource={true} />
+            </div>
+
+            <div className="proj-small" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', border: '1px solid #252523' }}>
+              {smallCards.map((card, i) => <SmallCard key={card.num} {...card} isLast={i === smallCards.length - 1} />)}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    /* ─── ABOUT ────────────────────────────────────────────────────── */
+    const About = () => {
+      const tagColors = {
+        systems:   { color: '#b8b4ad', borderColor: '#3a3a3f' },
+        scripting: { color: '#d4a853', borderColor: '#3a3010' },
+        web:       { color: '#3dcfbe', borderColor: '#0f3e3a' },
+        default:   { color: '#8a8780', borderColor: '#333330' },
+      };
+
+      const Tag = ({ name, type }) => {
+        const [hov, setHov] = useState(false);
+        const c = tagColors[type] || tagColors.default;
+        return (
+          <span onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+            style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, padding: '5px 12px', border: `1px solid ${hov ? '#d4a853' : c.borderColor}`, color: hov ? '#ede9e0' : c.color, cursor: 'default', transition: 'all 0.2s', display: 'inline-block' }}>
+            {name}
+          </span>
+        );
+      };
+
+      const CatHeader = ({ label }) => (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a4845', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{label}</span>
+          <div style={{ flex: 1, height: 1, background: '#252523' }} />
+        </div>
+      );
+
+      const cats = [
+        { label: 'Languages', tags: [{ name: 'Python', type: 'scripting' },{ name: 'Java', type: 'systems' },{ name: 'C', type: 'systems' },{ name: 'C++', type: 'systems' },{ name: 'C#', type: 'systems' },{ name: 'TypeScript', type: 'web' },{ name: 'JavaScript', type: 'web' },{ name: 'Shell Script', type: 'scripting' },{ name: 'SQL', type: 'default' },{ name: 'PowerShell', type: 'default' }] },
+        { label: 'Frameworks & Infra', tags: [{ name: 'Spring Boot', type: 'web' },{ name: 'Angular', type: 'web' },{ name: 'React', type: 'web' },{ name: 'Svelte', type: 'web' },{ name: 'Laravel', type: 'web' },{ name: 'Flask', type: 'web' },{ name: 'Docker', type: 'default' },{ name: 'Oracle Cloud', type: 'default' },{ name: 'Git', type: 'default' }] },
+        { label: 'Compiler & Security', tags: [{ name: 'LLVM', type: 'systems' },{ name: 'Clang', type: 'systems' },{ name: 'OAuth2', type: 'scripting' },{ name: 'Microsoft Entra ID', type: 'scripting' }] },
+      ];
+
+      return (
+        <section className="section-pad" style={{ background: '#0d0d0c', borderTop: '1px solid #252523', borderBottom: '1px solid #252523', padding: '88px 48px' }}>
+          <div className="about-grid" style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: 72, alignItems: 'start' }}>
+            <div className="about-sticky" style={{ position: 'sticky', top: 120 }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a4845', textTransform: 'uppercase', marginBottom: 20 }}>About</div>
+              <h2 style={{ fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontSize: 'clamp(2rem, 3.5vw, 3.2rem)', lineHeight: 1.1, color: '#ede9e0', marginBottom: 20 }}>
+                Building things that{' '}
+                <em style={{ fontStyle: 'normal', color: '#d4a853', fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>work.</em>
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 24 }}>
+                {[
+                  'MSc student at ELTE (Software & Service Architectures) and software developer at Ericsson with upstream open-source contributions to LLVM/Clang.',
+                  'Worked across the full stack with depth in C/C++, Java, and TypeScript. Experience spans compiler tooling, cloud auth systems, and tools people actually use at work every day.',
+                  'Also teach OOP and networking at university level - which means explaining things clearly matters as much as building them correctly.',
+                ].map((text, i) => (
+                  <p key={i} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, color: '#8a8780', lineHeight: 1.85 }}>{text}</p>
+                ))}
+              </div>
+              <div style={{ display: 'flex', gap: 24, paddingTop: 24, borderTop: '1px solid #252523', flexWrap: 'wrap' }}>
+                {[{ name: 'English', level: 'Professional' },{ name: 'Russian', level: 'Professional' },{ name: 'Azerbaijani', level: 'Native' }].map(({ name, level }) => (
+                  <div key={name}>
+                    <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, fontSize: 13, color: '#ede9e0' }}>{name}</div>
+                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a4845' }}>{level}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a4845', textTransform: 'uppercase', marginBottom: 24 }}>Skills & Stack</div>
+              {cats.map(cat => (
+                <div key={cat.label} style={{ marginBottom: 32 }}>
+                  <CatHeader label={cat.label} />
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                    {cat.tags.map(t => <Tag key={t.name} name={t.name} type={t.type} />)}
+                  </div>
+                </div>
+              ))}
+              <CatHeader label="Education" />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: '#8a8780' }}>MSc Computer Science · ELTE · 2025-2027</p>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, color: '#4a4845' }}>BSc Computer Science · ELTE · GPA 3.81/5 · 2020–2025</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    /* ─── CONTACT ──────────────────────────────────────────────────── */
+    const Contact = () => {
+      const contacts = [
+        { icon: 'gh', label: 'GitHub',   sub: 'feyruzb',                  href: 'https://github.com/feyruzb' },
+        { icon: 'in', label: 'LinkedIn', sub: 'feyruz',                   href: 'https://linkedin.com/in/feyruz' },
+        { icon: 'tg', label: 'Telegram', sub: 'S1MILARITY',               href: 'https://t.me/S1MILARITY' },
+        { icon: '@',  label: 'Email',    sub: 'feyruzbaghirov@gmail.com', href: 'mailto:feyruzbaghirov@gmail.com' },
+      ];
+
+      const ContactItem = ({ icon, label, sub, href }) => {
+        const [hov, setHov] = useState(false);
+        return (
+          <a href={href} target="_blank" rel="noopener noreferrer"
+            onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+            style={{ background: hov ? '#111110' : '#0a0a09', padding: 28, display: 'flex', alignItems: 'center', gap: 18, position: 'relative', textDecoration: 'none', transition: 'background 0.2s' }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: '#d4a853', transform: hov ? 'scaleX(1)' : 'scaleX(0)', transformOrigin: 'left', transition: 'transform 0.3s cubic-bezier(0.16,1,0.3,1)' }} />
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 16, color: hov ? '#d4a853' : '#4a4845', width: 28, textAlign: 'center', transition: 'color 0.2s', flexShrink: 0 }}>{icon}</div>
+            <div>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 14, color: '#ede9e0' }}>{label}</div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a4845' }}>{sub}</div>
+            </div>
+            <div style={{ position: 'absolute', right: 28, top: '50%', transform: 'translateY(-50%)', color: hov ? '#d4a853' : '#4a4845', fontSize: 14, transition: 'all 0.2s' }}>↗</div>
+          </a>
+        );
+      };
+
+      return (
+        <section className="section-pad" style={{ padding: '88px 48px', borderTop: '1px solid #252523' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+            {/* Big headline */}
+            <div style={{ marginBottom: 64, paddingBottom: 52, borderBottom: '1px solid #252523' }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: '#4a4845', textTransform: 'uppercase', marginBottom: 20 }}>Contact</div>
+              <h2 style={{ fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontSize: 'clamp(3rem, 7vw, 7rem)', lineHeight: 0.95, color: '#ede9e0', marginBottom: 24 }}>
+                Let's build<br />
+                <span style={{ color: '#d4a853', fontStyle: 'normal', fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>something.</span>
+              </h2>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 15, color: '#8a8780', maxWidth: 440, lineHeight: 1.8 }}>
+                Open to interesting projects, collaborations, and full-time opportunities.
+              </p>
+            </div>
+
+            <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, background: '#252523', border: '1px solid #252523' }}>
+              {contacts.map(c => <ContactItem key={c.label} {...c} />)}
+            </div>
+
+            <div style={{ marginTop: 56, paddingTop: 28, borderTop: '1px solid #252523', display: 'flex', justifyContent: 'space-between', fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#4a4845' }}>
+              <span>© 2026 Feyruz Baghirov</span>
+              <span>feyruz.dev</span>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    /* ─── APP ──────────────────────────────────────────────────────── */
+    const App = () => {
+      const [active, setActive] = useState('home');
+
+      useEffect(() => {
+        const sections = ['home','experience','projects','about','contact'];
+        const observers = sections.map(id => {
+          const el = document.getElementById(id);
+          if (!el) return null;
+          const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setActive(id); }, { threshold: 0.3 });
+          obs.observe(el);
+          return obs;
+        });
+        return () => observers.forEach(o => o && o.disconnect());
+      }, []);
+
+      const scrollTo = (id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+        setActive(id);
+      };
+
+      return (
+        <div style={{ background: '#0a0a09', minHeight: '100vh', color: '#ede9e0' }}>
+          <ScrollProgress />
+          <Nav active={active} onNav={scrollTo} />
+          <div id="home"><Hero onNav={scrollTo} /></div>
+          <MarqueeBand />
+          <div id="experience" className="reveal"><Experience /></div>
+          <div id="projects" className="reveal"><Projects /></div>
+          <div id="about" className="reveal"><About /></div>
+          <div id="contact" className="reveal"><Contact /></div>
+        </div>
+      );
+    };
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
 </html>
